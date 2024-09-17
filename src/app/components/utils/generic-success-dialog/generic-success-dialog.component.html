@@ -1,0 +1,10 @@
+<div class="container">
+    <div class="header">
+        <span class="title"><span style="font-weight: 500;">Success</span></span>
+        <mat-icon (click)="closeDialog()">close</mat-icon>
+    </div>
+    <div>{{data.action}}</div>
+    <div style="display: flex; gap: 20px;">
+        <div style="flex-grow: 1;" class="btn btn-success" (click)="closeDialog()">Okay</div>
+    </div>
+</div>

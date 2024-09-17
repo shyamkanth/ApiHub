@@ -1,0 +1,119 @@
+<div class="container" *ngIf="this.selectedRegistry">
+    <div class="page-heading">
+        <div class="page-heading-left">{{selectedRegistry.name}}</div>
+        <div class="page-heading-right">
+            <div class="btn btn-primary" (click)="openCreateEntryDialog()">Create new entry</div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="section-title">Description</div>
+        <div class="section-content">
+            <div *ngIf="selectedRegistry.description!=''">{{selectedRegistry.description}}</div>
+            <div style="font-style: italic; color: grey;" *ngIf="selectedRegistry.description==''">No description given</div>
+            <div class="entry" style="margin-bottom: 10px;">
+                <span class="entry-type entry-type-baseurl">Base URL</span>
+                <span class="entry-baseurl" *ngIf="selectedRegistry.baseUrl!=''">{{selectedRegistry.baseUrl}}</span>
+                <span class="entry-endpoint-placeholder" *ngIf="selectedRegistry.baseUrl==''">No Base URL available</span>
+            </div>
+            <div class="chip-col">
+                <div class="chip">
+                    <span class="chip-title">Registry categories</span>
+                    <span class="chip-info-primary">{{getCategoriesForSelectedRegistry().length}}</span>
+                </div>
+                <div class="chip">
+                    <span class="chip-title">Registry entries</span>
+                    <span class="chip-info-faded">{{getEndPointsForSelectedRegistry().length}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="section-title">
+            Entries
+            <span *ngIf="openedEntries.size" style="font-size: 12px; cursor: pointer; color: red;" (click)="collapseAllEntry()">Collapse all</span>
+        </div>
+        <div class="section-content">
+            <ng-container *ngIf="getCategoriesForSelectedRegistry().length == 0">
+                <span class="no-entry-added">No Entry Added, Add your first entry to get started</span>
+            </ng-container>
+            <ng-container *ngIf="getCategoriesForSelectedRegistry().length">
+                <div class="category" *ngFor="let category of getCategoriesForSelectedRegistry(); let catIndex = index">
+                    <div class="section-content-header">
+                        {{category.name}}
+                        <span class="header-action">
+                            <mat-icon class="icon-edit" title="Edit Category" (click)="openUpdateCategoryDailog(category)">edit</mat-icon>
+                            <mat-icon class="icon-delete" title="Delete Category" (click)="deleteCategory(category)">delete</mat-icon>
+                        </span>
+                    </div>
+                    <div style="margin-bottom: 15px;" *ngFor="let endPoint of getEndPointsForCategory(category.name); let i = index">
+                        <div class="entry" style="cursor: pointer;" (click)="toggleEntry(catIndex, i)">
+                            <span class="entry-type" [ngClass]="getMethodClass(endPoint.method)">{{endPoint.method}}</span>
+                            <span class="entry-endpoint-placeholder" *ngIf="endPoint.endPoint==''">{{placeholder}}</span>
+                            <span class="entry-endpoint" *ngIf="endPoint.endPoint !=''">{{endPoint.endPoint}}</span>
+                            <mat-icon 
+                                class="entry-toggle" 
+                                *ngIf="!isEntryOpened(catIndex, i)" 
+                                >expand_more</mat-icon>
+                            <mat-icon 
+                                class="entry-toggle" 
+                                *ngIf="isEntryOpened(catIndex, i)" 
+                                >expand_less</mat-icon>
+                        </div>
+                        <div *ngIf="isEntryOpened(catIndex, i)" class="entry-content">
+                            <div>
+                                <div class="request-label">Overview</div>
+                                <code class="request-code" *ngIf="endPoint.values.desription == null"><span style="color: gray; font-style: italic;">No overview available</span></code>
+                                <code>
+                                    <pre style="overflow-x: auto; scrollbar-width: none;" class="request-code" *ngIf="endPoint.values.desription != null">{{endPoint.values.desription}}</pre>
+                                </code>
+                            </div>
+                            <div>
+                                <div class="request-label">Request endpoint</div>
+                                <code title="click to copy the content" class="request-code" (click)="copyToClipboard(endPoint.endPoint)">{{endPoint.endPoint}}</code>
+                            </div>
+                            <div>
+                                <div class="request-label">Request URI</div>
+                                <code title="click to copy the content" class="request-code" (click)="copyToClipboard(selectedRegistry.baseUrl + endPoint.endPoint)">{{selectedRegistry.baseUrl}}{{endPoint.endPoint}}</code>
+                            </div>
+                            <div>
+                                <div class="request-label">HTTP method</div>
+                                <code title="click to copy the content" class="request-code" (click)="copyToClipboard(endPoint.method)">{{endPoint.method}}</code>
+                            </div>
+                            <div>
+                                <div class="request-label">Request header</div>
+                                <code class="request-code" *ngIf="endPoint.values.requestHeader == null"><span style="color: gray; font-style: italic;">No header available</span></code>
+                                <code>
+                                    <pre style="overflow-x: auto; scrollbar-width: none;" class="request-code" title="click to copy the content" *ngIf="endPoint.values.requestHeader != null" (click)="copyToClipboard(endPoint.values.requestHeader)">{{endPoint.values.requestHeader }}</pre>
+                                </code>
+                            </div>
+                            <div>
+                                <div class="request-label">Request payload</div>
+                                <code class="request-code" *ngIf="endPoint.values.requestBody == null"><span style="color: gray; font-style: italic;">No payload available</span></code>
+                                <code>
+                                    <pre class="request-code" title="click to copy the content" *ngIf="endPoint.values.requestBody != null" (click)="copyToClipboard(endPoint.values.requestBody)">{{endPoint.values.requestBody}}</pre>
+                                </code>
+                            </div>
+                            <div>
+                                <div class="request-label">Response body</div>
+                                <code class="request-code" *ngIf="endPoint.values.responseBody == null"><span style="color: gray; font-style: italic;">No body available</span></code>
+                                <pre class="request-code" title="click to copy the content" *ngIf="endPoint.values.responseBody != null" (click)="copyToClipboard(endPoint.values.responseBody)">{{endPoint.values.responseBody}}</pre>
+                            </div>
+                            <div class="entry-action">
+                                <span style="color: rgb(38, 183, 240); cursor: pointer;" (click)="openEditEntryDialog(endPoint)">Edit</span>
+                                <span style="color: red; cursor: pointer;" (click)="deleteEndPoint(endPoint)">Delete</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+            
+        </div>
+    </div>
+</div>
+<div class="container" *ngIf="!this.selectedRegistry">
+    <div class="content" style="text-align: center; color: grey; height: 85vh; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <h1>ApiHub</h1>
+        <h4>Your Own API Documentation Portal</h4>
+        <p style="font-weight: bold;">Kindly select your registry to get started</p>
+    </div>
+</div>

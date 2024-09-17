@@ -1,0 +1,35 @@
+@import '../../../variables.scss';
+@import '../../../predefined.scss';
+
+.container{
+    display: flex;
+    height: 100%;
+    .sidebar-left{
+        position: relative;
+        width: 20%;
+        padding: 10px;
+        overflow: auto;
+        scrollbar-width: none;
+    }
+    .sidebar-left::-webkit-scrollbar{
+        display: none;
+    }
+    .main{
+        position: relative;
+        padding: 10px;
+        width: 50%;
+        flex-grow: 1;
+        overflow: auto;
+        scrollbar-width: none;
+        border-right: 1px solid lightgray;
+        border-left: 1px solid lightgray;
+    }
+    .main::-webkit-scrollbar{
+        display: none;
+    }
+    .sidebar-right{
+        position: relative;
+        padding: 10px;
+        width: 20%;
+    }
+}

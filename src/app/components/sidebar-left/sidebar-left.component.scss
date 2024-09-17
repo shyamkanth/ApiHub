@@ -1,0 +1,15 @@
+@import '../../../variables.scss';
+@import '../../../predefined.scss';
+
+.heading{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    .btn{
+        font-size: 10px;
+        height: 10px;
+        width: fit-content;
+        color: black;
+        font-weight: 500;
+    }
+}

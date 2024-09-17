@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="header">
+        <span class="title">Create New Entry <sub style="color: gray; font-size: 12px; font-weight: 500;">in {{data.selectedRegistry.name}}</sub></span>
+        <mat-icon (click)="closeDialog()">close</mat-icon>
+    </div>
+    <div class="form">
+        <mat-form-field appearance="outline">
+            <mat-label>Method</mat-label>
+            <mat-select [(ngModel)]="method">
+                <mat-option *ngFor="let method of data.methods" [value]="method">{{method}}</mat-option>
+            </mat-select>
+            <mat-icon matSuffix>http</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Parent Registry</mat-label>
+            <input matInput [(ngModel)]="parentRegistry" readonly>
+            <mat-icon matSuffix>class</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Parent Category</mat-label>
+            <mat-select [(ngModel)]="parentCategory">
+                <ng-container *ngIf="data.categories.length != 0">
+                    <mat-option *ngFor="let category of data.categories" [value]="category.name">{{category.name}}</mat-option>
+                </ng-container>
+                <ng-container *ngIf="data.categories.length == 0">
+                    <mat-option disabled>No category added, add a category first</mat-option>
+                </ng-container>
+            </mat-select>
+            <mat-icon matSuffix>loyalty</mat-icon>
+        </mat-form-field>
+        <span style="color: red; font-size: 11px; margin-bottom: 5px;" *ngIf="isCategoryExist">Category already exist.</span>
+        <span style="color: red; font-size: 11px; margin-bottom: 5px;" *ngIf="isCategoryEmpty">Please add category first.</span>
+        <span style="color: green; font-size: 11px; margin-bottom: 5px; text-align: end;" *ngIf="isCategoryAdded">Category added successfully. You can now select from dropdown.</span>
+        <div class="category-add" style="display: flex;">
+            <mat-form-field appearance="outline" style="flex-grow: 1;">
+                <mat-label>Add Category (optional if you have at least one added)</mat-label>
+                <input [disabled]="newCategory!=null" matInput placeholder="Enter the category name" spellcheck="false" [(ngModel)]="categoryName">
+            </mat-form-field>
+            <div *ngIf="!newCategory" class="btn btn-warn" style="height: 38px;" (click)="addCategory()">Add</div>
+        </div>
+        <mat-form-field appearance="outline">
+            <mat-label>Endpoint</mat-label>
+            <input type="url" matInput placeholder="Enter the endpoint" spellcheck="false" [(ngModel)]="endPoint">
+            <mat-icon matSuffix>code</mat-icon>
+        </mat-form-field>
+    </div> 
+    <div *ngIf="isFieldEmpty" style="color: red; font-size: 11px; margin-bottom: 5px; text-align: end;">Please fill all the fields*</div>
+    <div class="btn btn-success" (click)="addEntry()">Create Entry</div>
+</div>

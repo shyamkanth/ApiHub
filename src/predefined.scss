@@ -1,0 +1,345 @@
+@import './variables.scss';
+
+/* Styling for buttons, always use with div or span */
+.btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 15px 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-primary{
+    background-color: $bg-primary;
+    color: $color-primary;
+    border: 1px solid $color-primary;
+}
+
+.btn-danger{
+    background-color: $bg-danger;
+    color: $color-danger;
+    border: 1px solid $color-danger;
+}
+
+.btn-warn{
+    background-color: $bg-warn;
+    color: $color-warn;
+    border: 1px solid $color-warn;
+}
+
+.btn-success{
+    background-color: $bg-success;
+    color: $color-success;
+    border: 1px solid $color-success;
+}
+
+
+/* Styling for chips, always use with div or span */
+.chip{
+    .chip-title{
+        background-color: $color-faded-dark;
+        color: white;
+        padding: 8px;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+    }
+    .chip-info-primary{
+        background-color: $color-primary;
+        color: white;
+        padding: 8px;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+    .chip-info-success{
+        background-color: $color-success;
+        color: white;
+        padding: 8px;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+    .chip-info-faded{
+        background-color: $color-faded;
+        color: white;
+        padding: 8px;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+}
+
+.chip-col{
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Badge */
+.badge-primary{
+    font-size: 10px;
+    border: 1px solid $color-primary;
+    color: $color-primary;
+    padding: 0 10px 0 10px;
+    border-radius: 50%;
+}
+.badge-success{
+    font-size: 10px;
+    border: 1px solid $color-success;
+    color: $color-success;
+    padding: 0 10px 0 10px;
+    border-radius: 50%;
+}
+.badge-danger{
+    font-size: 10px;
+    border: 1px solid $color-danger;
+    color: $color-danger;
+    padding: 0 10px 0 10px;
+    border-radius: 50%;
+}
+.badge-warn{
+    font-size: 10px;
+    border: 1px solid $color-warn;
+    color: $color-warn;
+    padding: 0 10px 0 10px;
+    border-radius: 50%;
+}
+
+/* Page heading */
+
+.page-heading{
+    height: fit-content;
+    padding: 0 0 10px 0;
+    display: flex;
+    align-items: center;
+    .page-heading-left{
+        color: $color-primary;
+        width: fit-content;
+        font-size: 28px;
+        font-weight: 500;
+        padding-bottom: 10px;
+    }
+    .page-heading-right{
+        flex-grow: 1;
+        padding-bottom: 10px;
+        display: flex;
+        justify-content: end;
+    }
+}
+
+/* Section */
+.section{
+    height: fit-content;
+    padding: 0 0 20px 0;
+    .section-title{
+        display: flex;
+        justify-content: space-between;
+        font-size: 19px;
+        color: $color-warn;
+        font-weight: 500;
+        padding-bottom: 10px;
+        border-bottom: 1px solid lightgray;
+    }
+    .section-content{
+        font-size: 14px;
+        text-align: justify;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px 0 0 0;
+        .no-entry-added{
+            text-align: center;
+            font-size: 18px;
+            color: gray;
+            font-style: italic;
+            text-transform: uppercase;
+        }
+        .section-content-header{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 18px;
+            font-weight: 500;
+            padding:10px 0 10px 0;
+            .header-action{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                .icon-delete{
+                    color: red;
+                }
+                .icon-edit{
+                    color: rgb(2, 162, 255);
+                }
+                mat-icon{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 20px;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
+
+/* Registry entry */
+.entry{
+    display: flex;
+    align-items: center;
+    .entry-type{
+        padding: 8px;
+        font-weight: 500;
+        min-height: 24px;
+        min-width: 62px;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+
+    }
+    .entry-type-baseurl{
+        min-width: fit-content !important;
+        background-color: $bg-warn;
+    }
+    .entry-type-post{
+        background-color: $bg-success;
+    }
+    .entry-type-get{
+        background-color: $bg-primary;
+    }
+    .entry-type-put{
+        background-color: $bg-warn;
+    }
+    .entry-type-patch{
+        background-color: $bg-warn;
+    }
+    .entry-type-delete{
+        background-color: $bg-danger;
+    }
+    .entry-type-options{
+        background-color: $bg-primary;
+    }
+    
+    .entry-endpoint{
+        flex-grow: 1;
+        padding: 8px;
+        max-width: 87%;
+        height: 24px;
+        background-color: rgb(59, 58, 58);
+        color: rgb(255, 217, 147);
+        overflow-x: auto;
+        scrollbar-width: none;
+        letter-spacing: 1.5px;
+    }
+    .entry-baseurl{
+        flex-grow: 1;
+        padding: 8px;
+        max-width: 85%;
+        height: 24px;
+        background-color: rgb(59, 58, 58);
+        color: white;
+        overflow: auto;
+        scrollbar-width: none;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        letter-spacing: 1.5px;
+    }
+    .entry-endpoint-placeholder{
+        flex-grow: 1;
+        padding: 8px;
+        max-width: 85%;
+        height: 24px;
+        background-color: rgb(59, 58, 58);
+        color: lightgrey;
+        overflow-x: auto;
+        font-style: italic;
+        scrollbar-width: none;
+    }
+    .entry-endpoint::-webkit-scrollbar{
+        display: none;
+    }
+    .entry-endpoint-placeholder::-webkit-scrollbar{
+        display: none;
+    }
+    .entry-toggle{
+        padding: 8px;
+        min-width: 3.5%;
+        height: 24px;
+        background-color: $bg-faded;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+.entry-content{
+    background-color: $bg-faded;
+    color: black;     
+    padding: 8px;
+    height: fit-content;
+}
+
+/* List and item */
+.list{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 10px 0 10px 0;
+    .list-item{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: $bg-faded;
+        border-radius: 5px;
+        font-size: 12px;
+        padding: 0 5px 0 5px;
+        border: 1px solid lightgray;
+        .item-name{
+            flex-grow: 1;
+            cursor: pointer;
+        }
+        .item-action{
+            width: 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .icon-delete{
+                color: red;
+            }
+            .icon-edit{
+                color: rgb(2, 162, 255);
+            }
+            mat-icon{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 16px;
+                cursor: pointer;
+            }
+        }
+    }
+    .list-item.checked{
+        background-color: rgb(90, 85, 85);
+        color: white;
+    }
+}
+
+.go-to-top{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: $bg-warn;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    position: sticky;
+    bottom: 10px;
+    right: 10px;
+    margin-left: auto;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}

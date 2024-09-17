@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="heading">
+        <span>Registries</span>
+        <div class="btn btn-primary" (click)="openCreateRegistryDialog()">Create new registry</div>
+    </div>
+    <div class="list">
+        <span class="list-item" *ngFor="let registry of registries, let i = index" [class.checked]="registry.name === selectedRegistryName">
+            <span class="item-name" title="{{registry.name}}" (click)="selectRegistry(registry)">{{registry.name}}</span>
+            <span class="item-action">
+                <mat-icon class="icon-edit" title="Edit Registry" (click)="openUpdateRegistryDialog(registry)">edit</mat-icon>
+                <mat-icon class="icon-delete" title="Delete Registry" (click)="deleteRegistry(registry)">delete</mat-icon>
+            </span>
+        </span>
+    </div>
+</div>

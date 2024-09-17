@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="header">
+        <span class="title">Create Registry</span>
+        <mat-icon (click)="closeDialog()">close</mat-icon>
+    </div>
+    <div class="form">
+        <span style="color: red; font-size: 11px; margin-bottom: 5px;" *ngIf="isRegistryExist">Registry already exist.</span>
+        <mat-form-field appearance="outline">
+            <mat-label>Registry Name</mat-label>
+            <input matInput placeholder="Enter the registry name" [(ngModel)]="name" spellcheck="false">
+            <mat-icon matSuffix>class</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Description</mat-label>
+            <textarea class="desc" rows="4" matInput placeholder="Enter the registry description" [(ngModel)]="description" spellcheck="false"></textarea>
+            <mat-icon matSuffix>label</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Base URL</mat-label>
+            <input type="url" matInput placeholder="Enter the base url" [(ngModel)]="baseUrl" spellcheck="false">
+            <mat-icon matSuffix>code</mat-icon>
+        </mat-form-field>
+    </div> 
+    <div *ngIf="isFieldEmpty" style="color: red; font-size: 11px; margin-bottom: 5px; text-align: end;">Please fill all the fields*</div>
+    <div class="btn btn-success" (click)="createRegistry()">Create Registry</div>
+</div>

@@ -1,0 +1,54 @@
+@import '../../../predefined.scss';
+@import '../../../styles.scss';
+.chip{
+    font-size: 10px;
+}
+.btn{
+    font-size: 10px;
+    height: 10px;
+    width: fit-content;
+    color: black;
+    font-weight: 500;
+}
+
+.request-label {
+    font-size: 16px;
+    font-weight: 500;
+    color: #66d9ef; /* Light blue text color */
+    margin-bottom: 5px;
+}
+
+.entry-content {
+    background-color: #2d2d2d; /* Dark background for the container */
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 10px;
+    color: #f8f8f2; /* Light text color */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+.request-code {
+    display: block;
+    background-color: #272822; /* Slightly darker background for code block */
+    color: #cfe0ab; /* Light green code text */
+    padding: 10px;
+    height: fit-content;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;/* Prevent wrapping */
+    border-left: 4px solid #66d9ef; /* Accent border */
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2); /* Inner shadow */
+}
+
+.request-code:hover {
+    background-color: #3e3e3e; /* Slightly lighter on hover */
+    color: #f92672; /* Bright pink hover color for fun */
+    border-left: 4px solid #f92672; /* Change accent color on hover */
+}
+.entry-action{
+    display: flex;
+    justify-content: end;
+    gap: 15px;
+    font-weight: 500;
+}

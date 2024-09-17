@@ -1,0 +1,25 @@
+@import '../variables.scss';
+@import '../predefined.scss';
+.container{
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.btn{
+    height: 14px;
+    width: 60px;
+    font-size: 12px;
+}
+.chip{
+    font-size: 10px;
+}
+.section{
+    width: 50%;
+}
+.section-content{
+    font-size: 14px;
+}

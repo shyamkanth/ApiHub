@@ -1,0 +1,81 @@
+<div class="container">
+    <div class="header">
+        <span class="title">Update Entry</span>
+        <mat-icon (click)="closeDialog()">close</mat-icon>
+    </div>
+    <div class="form">
+        <mat-stepper orientation="vertical" #stepper>
+            <mat-step>
+                <ng-template matStepLabel>Fill out the entry description (optional)</ng-template>
+                <mat-form-field appearance="outline" style="margin-top: 10px; width: 100%;">
+                    <mat-label>Entry Description</mat-label>
+                    <textarea class="code-editor desc" rows="10" matInput placeholder="Enter the entry description" spellcheck="false" [(ngModel)]="entryDescription" (keydown)="handleIndentation($event)"></textarea>
+                    <mat-icon matSuffix>label</mat-icon>
+                </mat-form-field>
+                <div>
+                    <button mat-button matStepperNext>Next</button>
+                </div>
+            </mat-step>
+            <mat-step>
+                <ng-template matStepLabel>Request Header</ng-template>
+                <mat-form-field appearance="outline" style="margin-top: 10px; width: 100%;">
+                    <mat-label>Request Header</mat-label>
+                    <textarea 
+                    class="code-editor desc" 
+                    rows="10"
+                    matInput
+                    placeholder="Enter the request header"
+                    spellcheck="false"
+                    (keydown)="handleIndentation($event)"
+                    [(ngModel)]="requestHeader"
+                    ></textarea>
+                    <mat-icon matSuffix>https</mat-icon>
+                </mat-form-field>
+                <div>
+                    <button mat-button matStepperPrevious>Previous</button>
+                    <button mat-button matStepperNext>Next</button>
+                </div>
+            </mat-step>
+            <mat-step>
+                <ng-template matStepLabel>Request Body</ng-template>
+                <mat-form-field appearance="outline" style="margin-top: 10px; width: 100%;">
+                    <mat-label>Request Body</mat-label>
+                    <textarea 
+                    class="code-editor desc" 
+                    rows="10"
+                    matInput
+                    placeholder="Enter the request body"
+                    spellcheck="false"
+                    (keydown)="handleIndentation($event)"
+                    [(ngModel)]="requestBody"
+                    ></textarea>
+                    <mat-icon matSuffix>languagee</mat-icon>
+                </mat-form-field>
+                <div>
+                    <button mat-button matStepperPrevious>Previous</button>
+                    <button mat-button matStepperNext>Next</button>
+                </div>
+            </mat-step>
+            <mat-step>
+                <ng-template matStepLabel>Response Body</ng-template>
+                <mat-form-field appearance="outline" style="margin-top: 10px; width: 100%;">
+                    <mat-label>Response Body</mat-label>
+                    <textarea 
+                    class="code-editor desc" 
+                    rows="10"
+                    matInput
+                    placeholder="Enter the response body"
+                    spellcheck="false"
+                    (keydown)="handleIndentation($event)"
+                    [(ngModel)]="responseBody"
+                    ></textarea>
+                    <mat-icon matSuffix>language</mat-icon>
+                </mat-form-field>
+                <div>
+                    <button mat-button matStepperPrevious>Previous</button>
+                </div>
+            </mat-step>
+        </mat-stepper>
+    </div> 
+    <div class="btn btn-warn" (click)="updateEntry()">Update Entry</div>
+</div>

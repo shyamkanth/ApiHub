@@ -1,0 +1,11 @@
+<div class="container">
+    <div class="header">
+        <span class="title">Are You Sure To Delete <span style="font-weight: 500;">{{data.property.name}}</span>?</span>
+        <mat-icon (click)="closeDialog()">close</mat-icon>
+    </div>
+    <div style="color: red;">This action can't be undone! All it's child info will be deleted.</div>
+    <div style="display: flex; gap: 20px;">
+        <div style="flex-grow: 1;" class="btn btn-warn" (click)="closeDialog()">Cancel</div>
+        <div style="flex-grow: 1;" class="btn btn-danger"  (click)="delete()">Delete</div>
+    </div>
+</div>

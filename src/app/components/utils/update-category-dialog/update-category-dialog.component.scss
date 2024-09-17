@@ -1,0 +1,29 @@
+@import '../../../../predefined.scss';
+.container{
+    padding: 10px;
+    .header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .title{
+            font-size: 18px;
+        }
+        mat-icon{
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+    }
+    .form{
+        display: flex;
+        flex-direction: column;
+        padding: 20px 0 10px 0;
+        input, textarea{
+            font-size: 14px;
+        }
+    }
+    .btn{
+        color: rgb(255, 255, 255);
+        font-weight: 500;
+    }
+}

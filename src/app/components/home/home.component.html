@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="sidebar-left">
+        <app-sidebar-left (selectedRegistry)="onRegistrySelected($event)" id="left" ></app-sidebar-left>
+        <div class="go-to-top" (click)="scrollToTop('left')">
+            <mat-icon>expand_less</mat-icon>
+        </div>
+    </div>
+    <div class="main">
+        <app-main [selectedRegistry]="selectedRegistry" id="main"></app-main>
+        <div class="go-to-top" (click)="scrollToTop('main')">
+            <mat-icon>expand_less</mat-icon>
+        </div>
+    </div>
+    <div class="sidebar-right" id="right">
+        <app-sidebar-right></app-sidebar-right>
+        <div class="go-to-top" (click)="scrollToTop('right')">
+            <mat-icon>expand_less</mat-icon>
+        </div>
+    </div>
+</div>
